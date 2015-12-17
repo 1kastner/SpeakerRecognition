@@ -1,2 +1,10 @@
+# unwanted build products
 *.pyc
-*.wav #they tend to be too big for git to handle
+
+# too large to be kept with git
+AudioFiles/*
+!AudioFiles/.gitkeep
+
+# vendor libraries
+Vendors/*
+!Vendors/.gitkeep
