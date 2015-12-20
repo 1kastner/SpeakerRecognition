@@ -1,0 +1,149 @@
+*-* The format is just suggestive; you can change it however you see fit. *-*
+
+---------------------------------------------
+Speaker Recognition Project @METU - 2015/Fall
+by Marvin Kastner, Kamuran Özlem & Fırat Öter
+---------------------------------------------
+
+This project is for generating an automated machine learning model for a text-independent
+speaker recognition task in a minimally noisy setting. Multiple approaches will be utilized
+in order to provide a comparative study, in which various models will be used based on 
+distinctions related to modeling paradigms, such as supervised-unsupervised training, 
+online-offline identification and so on.    
+
+For the time being, the models being outsourced and employed are VoiceID (v0.3) and Bob Bio
+Spear (v2.0.4).
+
+-------
+VoiceID
+-------
+
+> https://code.google.com/p/voiceid/
+
+> Dependencies: 
+    Python 2.7
+    Java >= 1.6
+    GStreamer (base, good, bad, tools)
+    SoX
+
+VoiceID is a speaker recognition/identification system written in Python, based on the LIUM 
+Speaker Diarization framework. VoiceID can process video or audio files to identify in which 
+slices of time there is a person speaking (diarization); then it examines all those segments 
+to identify who is speaking. To do so you must have a voice models database. To create the 
+database you have to do a "train phase", in interactive mode, by assigning a label to the 
+unknown speakers.
+
+You can also build yourself the speaker models and put those in the db using the scripts to 
+create the gmm files. It can run on Windows, Linux, Mac OS X. You can find a code example 
+about the underling python library in the wiki page UsingLibrary.
+
+> How to install:
+
+>> In Linux:
+>>> Dependencies: 
+    $ sudo apt-get install python2.7 
+    $ sudo apt-get install openjdk-7-jdk 
+    $ sudo apt-get install gstreamer0.10-plugins-base
+    $ sudo apt-get install gstreamer0.10-plugins-good 
+    $ sudo apt-get install gstreamer0.10-plugins-bad 
+    $ sudo apt-get install gstreamer-tools
+    $ sudo apt-get install sox
+    $ sudo apt-get install subversion
+>>> VoiceID:    
+    $ svn checkout http://voiceid.googlecode.com/svn/trunk voiceid
+    $ cd voiceid
+    $ sudo python setup.py install
+    $ cd .. 
+    $ sudo rm -f -r voiceid
+
+>> In Windows:
+    Just download the executable file from the main-page and install it.
+
+-----------
+BobBioSpear
+-----------
+
+> https://github.com/idiap/bob/wiki
+
+> Documentation: http://pythonhosted.org/bob.bio.spear/index.html
+> Dependencies: https://github.com/idiap/bob/wiki/Dependencies
+> Installation: https://github.com/idiap/bob/wiki/Installation
+    
+BobBioSpear package is part of the bob.bio packages, which allow to run comparable and 
+reproducible biometric recognition experiments on publicly available databases. This package 
+contains functionality to run speaker recognition experiments. It is an extension to the 
+bob.bio.base package, which provides the basic scripts. 
+
+In this package, utilities that are specific for speaker recognition are contained, such as: 
+audio databases, voice activity detection preprocessing, acoustic feature extractors and 
+recognition algorithms based on acoustic features.
+
+> How to install:
+
+>> In Linux:
+>>> Dependencies: 
+    [You can copy and paste them all in a single line from "Dependencies" page]
+    $ sudo add-apt-repository ppa:biometrics/bob
+    $ sudo apt-get update
+    $ sudo apt-get install wget 
+    $ sudo apt-get install git-core 
+    $ sudo apt-get install pkg-config 
+    $ sudo apt-get install cmake 
+    $ sudo apt-get install python-dev 
+    $ sudo apt-get install python-support 
+    $ sudo apt-get install liblapack-dev 
+    $ sudo apt-get install libatlas-base-dev 
+    $ sudo apt-get install libblitz1-dev 
+    $ sudo apt-get install libavformat-dev 
+    $ sudo apt-get install libavcodec-dev 
+    $ sudo apt-get install libswscale-dev 
+    $ sudo apt-get install libboost-all-dev 
+    $ sudo apt-get install libmatio-dev 
+    $ sudo apt-get install libjpeg8-dev 
+    $ sudo apt-get install libnetpbm10-dev 
+    $ sudo apt-get install libpng12-dev 
+    $ sudo apt-get install libtiff4-dev 
+    $ sudo apt-get install libgif-dev 
+    $ sudo apt-get install libhdf5-serial-dev 
+    $ sudo apt-get install libfftw3-dev 
+    $ sudo apt-get install texlive-latex-recommended 
+    $ sudo apt-get install texlive-latex-extra 
+    $ sudo apt-get install texlive-fonts-recommended 
+    $ sudo apt-get install libsvm-dev 
+    $ sudo apt-get install libvl-dev 
+    $ sudo apt-get install dvipng 
+    $ sudo apt-get install python-numpy 
+    $ sudo apt-get install python-scipy 
+    $ sudo apt-get install dvipng 
+    $ sudo apt-get install libopencv-dev 
+    $ sudo apt-get install gcc 
+    $ sudo apt-get install g++ 
+    $ sudo apt-get install make
+    $ sudo apt-get install python-argparse 
+    $ sudo apt-get install python-matplotlib 
+    $ sudo apt-get install python-tornado 
+    $ sudo apt-get install python-sqlalchemy 
+    $ sudo apt-get install python-sphinx 
+    $ sudo apt-get install python-nose 
+    $ sudo apt-get install python-setuptools 
+    $ sudo apt-get install python-imaging 
+    $ sudo apt-get install ipython 
+    $ sudo apt-get install python-ipdb
+>>> BobBioSpear:
+    
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
