@@ -23,7 +23,10 @@ def run_learning(sample, label):
 
 if __name__ == "__main__":
     for window in get_features("firat_speakerRecognitionWiki_16khz_mono.wav"): # a 20ms window
-        for feature in window: #value of vector
-            print feature, ","
+        import sys
+        for pos, feature in enumerate(window): #value of vector
+            sys.stdout.write(str(feature))
+            if len(window) - 1 != pos:
+                sys.stdout.write(",")
         print ";"
 
