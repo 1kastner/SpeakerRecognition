@@ -6,13 +6,24 @@ import LearningAlgorithm
 import Segregator
 
 
-def run_learning(sample, label):
+def get_features(sample):
+    """
+    @param sample:
+    @return:
+    """
     base_pre_data = InputLoader.get_wave_file(sample)
     preprocessed = Segregator.mark_speaker(base_pre_data)
-    features = FeatureExtractor.extract_mfcc_60(preprocessed)
+    return FeatureExtractor.extract_mfcc_60(preprocessed)
+
+
+def run_learning(sample, label):
+    features = get_features(sample)
     LearningAlgorithm.run_training(features, "Firat")
 
 
 if __name__ == "__main__":
-    run_learning("firat_speakerRecognitionWiki_16khz_mono.wav", "Firat")
-    LearningAlgorithm.check_sample("firat_speakerRecognitionWiki_16khz_mono.wav", ["Firat"])
+    for window in get_features("firat_speakerRecognitionWiki_16khz_mono.wav"): # a 20ms window
+        for feature in window: #value of vector
+            print feature, ","
+        print ";"
+
