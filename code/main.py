@@ -4,6 +4,7 @@ import FeatureExtractor
 import InputLoader
 import LearningAlgorithm
 import Segregator
+import sys
 
 
 def get_features(sample):
@@ -16,17 +17,23 @@ def get_features(sample):
     return FeatureExtractor.extract_mfcc_60(preprocessed)
 
 
+def write_features_to_stdout(features):
+    """
+    @type features: numpy.array
+    @param features: The extracted features per window of a single person
+    """
+    for window in features:
+        for pos, feature in enumerate(window):  # value of vector
+            sys.stdout.write(str(feature))
+            if len(window) - 1 != pos:
+                sys.stdout.write(",")
+        print ";"
+
+
 def run_learning(sample, label):
     features = get_features(sample)
     LearningAlgorithm.run_training(features, "Firat")
 
 
 if __name__ == "__main__":
-    for window in get_features("firat_speakerRecognitionWiki_16khz_mono.wav"): # a 20ms window
-        import sys
-        for pos, feature in enumerate(window): #value of vector
-            sys.stdout.write(str(feature))
-            if len(window) - 1 != pos:
-                sys.stdout.write(",")
-        print ";"
-
+    write_features_to_stdout(get_features(sys.argv[1]))

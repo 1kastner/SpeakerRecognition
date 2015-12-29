@@ -4,13 +4,15 @@ The learning algorithm takes the extracted features and makes sense of them in a
 import os
 import bob.bio.gmm.algorithm
 import bob.learn.em
+import bob.io.base
+import bob.bio.gmm.tools.gmm
 
 
-def _get_projector_database(file_name):
+def _get_file(file_name):
     return os.path.join(
             os.path.dirname(os.path.realpath(__file__)),
             os.pardir,
-            "ProjectorFiles",
+            "IntermediateFiles",
             file_name
     )
 
@@ -40,32 +42,4 @@ def _load_algorithm():
             scoring_function=bob.learn.em.linear_scoring
     )
 
-
-def run_training(features, label):
-    """
-    @param features: (numpy.array, numpy.array, ...)
-    @param label: name
-    """
-    algorithm = _load_algorithm()
-    algorithm.train_projector(features, _get_projector_database(label))
-
-
-def check_sample(sample, labels):
-    """
-    @param sample: numpy.array A feature array
-    @param labels: String[] The labels to compare the sample with
-    @return:
-    """
-    scores = []
-    for label in labels:
-        algorithm = _load_algorithm()
-        algorithm.load_enroller(_get_projector_database(label))
-        scores += (label, algorithm.score(algorithm.ubm, sample))
-    max_score = 0
-    max_label = None
-    for score in scores:
-        if score[1] > max:
-            max_label = score[0]
-            max_score = score[1]
-    return max_score, max_label
 

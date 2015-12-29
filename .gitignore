@@ -4,6 +4,8 @@
 # too large to be kept with git
 AudioFiles/*
 !AudioFiles/.gitkeep
+results/*
+!results/.gitkeep
 
 # vendor libraries
 Vendors/*
