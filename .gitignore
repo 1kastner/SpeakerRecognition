@@ -6,6 +6,7 @@ AudioFiles/*
 !AudioFiles/.gitkeep
 results/*
 !results/.gitkeep
+!results/label_data.py
 
 # vendor libraries
 Vendors/*
