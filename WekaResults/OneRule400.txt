@@ -1,0 +1,141 @@
+=== Run information ===
+
+Scheme:weka.classifiers.rules.OneR -B 400
+Relation:     cogs_speaker
+Instances:    285036
+Attributes:   61
+              0
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+              11
+              12
+              13
+              14
+              15
+              16
+              17
+              18
+              19
+              20
+              21
+              22
+              23
+              24
+              25
+              26
+              27
+              28
+              29
+              30
+              31
+              32
+              33
+              34
+              35
+              36
+              37
+              38
+              39
+              40
+              41
+              42
+              43
+              44
+              45
+              46
+              47
+              48
+              49
+              50
+              51
+              52
+              53
+              54
+              55
+              56
+              57
+              58
+              59
+              class
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+6:
+	< -1.040730080785	-> Kamuran
+	< -1.0246009007399999	-> Marvin
+	< -0.979073209844	-> Kamuran
+	< -0.963821063285	-> Marvin
+	< -0.9343851953394999	-> Kamuran
+	< -0.9073868788045	-> Marvin
+	< -0.8531110833275	-> Kamuran
+	< -0.7745462770189999	-> Marvin
+	< -0.749559266913	-> Kamuran
+	< -0.7024355791725	-> Marvin
+	< -0.679362552506	-> Kamuran
+	< -0.5711049169785001	-> Marvin
+	< -0.560459266037	-> Kamuran
+	< -0.5401514221329999	-> Marvin
+	< -0.5300370411955	-> Kamuran
+	< -0.48994471583599997	-> Marvin
+	< -0.4794635324105	-> Kamuran
+	< -0.402783680953	-> Marvin
+	< -0.393943007605	-> Kamuran
+	< -0.313628811158	-> Marvin
+	< -0.3047006079535	-> Kamuran
+	< -0.29600953787999995	-> Marvin
+	< -0.286583155129	-> Kamuran
+	< -0.277464614529	-> Marvin
+	< 1.35559480271	-> Kamuran
+	< 1.37836054166	-> Marvin
+	< 1.402291842545	-> Kamuran
+	< 1.427901409285	-> Marvin
+	< 1.48172172339	-> Kamuran
+	< 1.511433280685	-> Marvin
+	< 1.539948362945	-> Kamuran
+	< 1.603732657895	-> Marvin
+	< 1.63927468703	-> Kamuran
+	< 1.831194528385	-> Marvin
+	< 1.8815543945	-> Kamuran
+	< 2.21384405851	-> Marvin
+	>= 2.21384405851	-> Kamuran
+(123738/285036 instances correct)
+
+
+Time taken to build model: 24.19 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances       41609               42.9348 %
+Incorrectly Classified Instances     55303               57.0652 %
+Kappa statistic                          0.0417
+Mean absolute error                      0.3804
+Root mean squared error                  0.6168
+Relative absolute error                 87.8966 %
+Root relative squared error            132.5304 %
+Total Number of Instances            96912     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.807     0.766      0.436     0.807     0.566      0.52     Kamuran
+                 0         0          0         0         0          0.5      Firat
+                 0.261     0.194      0.406     0.261     0.318      0.533    Marvin
+Weighted Avg.    0.429     0.39       0.322     0.429     0.347      0.52 
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 33078     0  7919 |     a = Kamuran
+ 18648     0  4547 |     b = Firat
+ 24189     0  8531 |     c = Marvin
+

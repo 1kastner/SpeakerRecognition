@@ -1,0 +1,117 @@
+=== Run information ===
+
+Scheme:weka.classifiers.rules.OneR -B 1000
+Relation:     cogs_speaker
+Instances:    285036
+Attributes:   61
+              0
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+              11
+              12
+              13
+              14
+              15
+              16
+              17
+              18
+              19
+              20
+              21
+              22
+              23
+              24
+              25
+              26
+              27
+              28
+              29
+              30
+              31
+              32
+              33
+              34
+              35
+              36
+              37
+              38
+              39
+              40
+              41
+              42
+              43
+              44
+              45
+              46
+              47
+              48
+              49
+              50
+              51
+              52
+              53
+              54
+              55
+              56
+              57
+              58
+              59
+              class
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+6:
+	< -0.8571911666255	-> Kamuran
+	< -0.7584013632825	-> Marvin
+	< -0.7278436150534999	-> Kamuran
+	< -0.6991150518564999	-> Marvin
+	< -0.6693457659140001	-> Kamuran
+	< -0.536681372581	-> Marvin
+	< -0.511731671215	-> Kamuran
+	< -0.28752439912850003	-> Marvin
+	< 1.3847736471749998	-> Kamuran
+	< 1.4513988150550001	-> Marvin
+	< 1.5205954295500002	-> Kamuran
+	< 2.256729041715	-> Marvin
+	>= 2.256729041715	-> Kamuran
+(123454/285036 instances correct)
+
+
+Time taken to build model: 91.65 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances       41717               43.0463 %
+Incorrectly Classified Instances     55195               56.9537 %
+Kappa statistic                          0.0457
+Mean absolute error                      0.3797
+Root mean squared error                  0.6162
+Relative absolute error                 87.7249 %
+Root relative squared error            132.4009 %
+Total Number of Instances            96912     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.793     0.749      0.437     0.793     0.564      0.522    Kamuran
+                 0         0          0         0         0          0.5      Firat
+                 0.281     0.207      0.409     0.281     0.333      0.537    Marvin
+Weighted Avg.    0.43      0.387      0.323     0.43      0.351      0.522
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 32518     0  8479 |     a = Kamuran
+ 18356     0  4839 |     b = Firat
+ 23521     0  9199 |     c = Marvin
+
