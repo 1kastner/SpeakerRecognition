@@ -2,8 +2,7 @@
 
 import FeatureExtractor
 import InputLoader
-import LearningAlgorithm
-import Segregator
+import MarkSpeech
 import sys
 
 
@@ -13,27 +12,23 @@ def get_features(sample):
     @return:
     """
     base_pre_data = InputLoader.get_wave_file(sample)
-    preprocessed = Segregator.mark_speaker(base_pre_data)
+    preprocessed = MarkSpeech.mark_speaker(base_pre_data)
     return FeatureExtractor.extract_mfcc_60(preprocessed)
 
 
-def write_features_to_stdout(features):
+def write_features_to_standard_outout(label, features):
     """
+    @type label: String
+    @param label: The speaker
     @type features: numpy.array
     @param features: The extracted features per window of a single person
     """
     for window in features:
-        for pos, feature in enumerate(window):  # value of vector
-            sys.stdout.write(str(feature))
-            if len(window) - 1 != pos:
-                sys.stdout.write(",")
-        print ";"
-
-
-def run_learning(sample, label):
-    features = get_features(sample)
-    LearningAlgorithm.run_training(features, "Firat")
+        for feature in window:  # value of vector
+            sys.stdout.write(str(feature)+",")
+        print label
 
 
 if __name__ == "__main__":
-    write_features_to_stdout(get_features(sys.argv[1]))
+    # 1st arg: speaker, 2nd arg: wave file name
+    write_features_to_standard_outout(sys.argv[1], get_features(sys.argv[2]))

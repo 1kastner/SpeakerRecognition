@@ -20,5 +20,3 @@ def get_wave_file(file_name):
     )
     base_preprocessor = bob.bio.spear.preprocessor.Base()
     return base_preprocessor.read_original_data(file_path)
-
-# TODO add microphone resource here
