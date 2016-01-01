@@ -34,8 +34,9 @@ SingleSpeaker () {
     cat ${ARFF_TARGET}"/"${1}"SingleSpeakerData.arff" >> ${ARFF_TARGET}"/all.arff"
 }
 
-cat /dev/null > ${ARFF_TARGET}"/all.arff"
+cat "$HEADER" > ${ARFF_TARGET}"/all.arff"
 SingleSpeaker Kamuran
 SingleSpeaker Firat
 SingleSpeaker Marvin
 
+#cat ${ARFF_TARGET}"/KamuranSingleSpeakerData.arff" ${ARFF_TARGET}"/FiratSingleSpeakerData.arff" ${ARFF_TARGET}"/MarvinSingleSpeakerData.arff" >> ${ARFF_TARGET}"/all.arff"
