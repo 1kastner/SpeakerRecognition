@@ -23,8 +23,12 @@ def write_features_to_standard_outout(label, features):
     @type features: numpy.array
     @param features: The extracted features per window of a single person
     """
+    print "@RELATION cogs_speaker"
+    for pos, feature in enum(features[0]):
+        print "@ATTRIBUTE " + str(pos) + " NUMERIC"
+    print "@ATTRIBUTE class {Kamuran,Firat,Marvin}"
     for window in features:
-        for feature in window:  # value of vector
+        for feature in window:
             sys.stdout.write(str(feature)+",")
         print label
 

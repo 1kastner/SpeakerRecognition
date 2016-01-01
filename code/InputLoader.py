@@ -16,6 +16,7 @@ def get_wave_file(file_name):
             os.path.dirname(os.path.realpath(__file__)),
             os.pardir,
             "AudioFiles",
+            "Reformatted",
             file_name
     )
     base_preprocessor = bob.bio.spear.preprocessor.Base()
