@@ -12,8 +12,8 @@ python $HOME/projectrepository/code/main.py HEADER > "$ARFF_TARGET/header.tmp"
 HEADER="$ARFF_TARGET/header.tmp"
 
 Wiki () {
-    python $MAIN $1 $2.wav > $2"Data.arff"
-    cat "$HEADER" "$ARFF_TARGET/$2Data.arff" > "$ARFF_TARGET/$2Wiki.arff"
+    python $MAIN $1 $2.wav > $ARFF_TARGET$2"Data.arff"
+    cat "$HEADER" "$ARFF_TARGET/$2Data.arff" > "$ARFF_TARGET/$2.arff"
 }
 
 Wiki Firat FiratWiki
