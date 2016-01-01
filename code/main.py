@@ -23,16 +23,24 @@ def write_features_to_standard_outout(label, features):
     @type features: numpy.array
     @param features: The extracted features per window of a single person
     """
-    print "@RELATION cogs_speaker"
-    for pos, feature in enum(features[0]):
-        print "@ATTRIBUTE " + str(pos) + " NUMERIC"
-    print "@ATTRIBUTE class {Kamuran,Firat,Marvin}"
     for window in features:
         for feature in window:
             sys.stdout.write(str(feature)+",")
         print label
 
 
+def print_header():
+    print "@RELATION cogs_speaker"
+    for pos in range(60): # a 60 value vector
+        print "@ATTRIBUTE " + str(pos) + " NUMERIC"
+    print "@ATTRIBUTE class {Kamuran,Firat,Marvin}"
+    print ""
+    print "@DATA"
+
+
 if __name__ == "__main__":
     # 1st arg: speaker, 2nd arg: wave file name
-    write_features_to_standard_outout(sys.argv[1], get_features(sys.argv[2]))
+    if sys.argv[1] == "HEADER":
+        print_header()
+    else:
+        write_features_to_standard_outout(sys.argv[1], get_features(sys.argv[2]))
