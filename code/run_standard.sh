@@ -8,7 +8,7 @@ MAIN=$HOME/projectrepository/code/main.py
 
 Wiki () {
     python $MAIN $1 $2.wav > $2"Data.arff"
-    cat $HEADER "$ARFF_TARGET$2Data.arff" > "$ARFF_TARGET$2Wiki.arff"
+    cat $HEADER "$ARFF_TARGET"/"$2Data.arff" > "$ARFF_TARGET"/"$2Wiki.arff"
 }
 
 Wiki Firat FiratWiki
