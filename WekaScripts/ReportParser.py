@@ -12,7 +12,7 @@ def get_correctly_classified_instances(report):
     @param report: The weka report
     @type report: String
     """
-    re.match("Correctly Classified Instances[\s]*[0-9]*[\s]*([0-9]*.[0-9]*) \%", report)
+    o = re.compile("Correctly Classified Instances[\s]*[0-9]*[\s]*([0-9]*.[0-9]*) \%", report)
 
     
 def demo():
