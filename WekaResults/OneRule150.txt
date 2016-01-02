@@ -1,0 +1,251 @@
+=== Run information ===
+
+Scheme:weka.classifiers.rules.OneR -B 150
+Relation:     cogs_speaker
+Instances:    285036
+Attributes:   61
+              0
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+              11
+              12
+              13
+              14
+              15
+              16
+              17
+              18
+              19
+              20
+              21
+              22
+              23
+              24
+              25
+              26
+              27
+              28
+              29
+              30
+              31
+              32
+              33
+              34
+              35
+              36
+              37
+              38
+              39
+              40
+              41
+              42
+              43
+              44
+              45
+              46
+              47
+              48
+              49
+              50
+              51
+              52
+              53
+              54
+              55
+              56
+              57
+              58
+              59
+              class
+Test mode:2-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+6:
+	< -1.19192738235	-> Kamuran
+	< -1.184117197795	-> Marvin
+	< -1.0512374922549999	-> Kamuran
+	< -1.04490641095	-> Marvin
+	< -1.033230401965	-> Kamuran
+	< -1.021860066075	-> Marvin
+	< -1.010497782685	-> Kamuran
+	< -0.998817338511	-> Marvin
+	< -0.9778135341295	-> Kamuran
+	< -0.9669623659435	-> Marvin
+	< -0.9288521256465	-> Kamuran
+	< -0.9088527327295	-> Marvin
+	< -0.8891837445605	-> Kamuran
+	< -0.8839733888804999	-> Marvin
+	< -0.8533325319930001	-> Kamuran
+	< -0.8483795055295	-> Marvin
+	< -0.8433228061315	-> Kamuran
+	< -0.8181004080755	-> Marvin
+	< -0.8080689563250001	-> Kamuran
+	< -0.799064587208	-> Marvin
+	< -0.793571901642	-> Kamuran
+	< -0.7755992277204999	-> Marvin
+	< -0.766279241721	-> Kamuran
+	< -0.7569784487819999	-> Marvin
+	< -0.752823001164	-> Kamuran
+	< -0.7393459578305	-> Marvin
+	< -0.7348137919019999	-> Kamuran
+	< -0.7218066194385	-> Marvin
+	< -0.717689088765	-> Kamuran
+	< -0.7137074398315	-> Marvin
+	< -0.7092736499505	-> Kamuran
+	< -0.701092872424	-> Marvin
+	< -0.6932894984535001	-> Kamuran
+	< -0.6845221621555	-> Marvin
+	< -0.6708731374820001	-> Kamuran
+	< -0.6629562742635	-> Marvin
+	< -0.6585169487735001	-> Kamuran
+	< -0.6470447608459999	-> Marvin
+	< -0.6432186047495	-> Kamuran
+	< -0.6232221533775	-> Marvin
+	< -0.618879273492	-> Kamuran
+	< -0.5993762038920001	-> Marvin
+	< -0.5952246549019999	-> Kamuran
+	< -0.5866362437685	-> Marvin
+	< -0.582774510313	-> Kamuran
+	< -0.5720073182595	-> Marvin
+	< -0.568133384786	-> Kamuran
+	< -0.5640242195535	-> Marvin
+	< -0.5604480592055	-> Kamuran
+	< -0.5527340291255	-> Marvin
+	< -0.548854565698	-> Kamuran
+	< -0.537436016954	-> Marvin
+	< -0.5266002042525	-> Kamuran
+	< -0.5233055621975	-> Marvin
+	< -0.5155781594025	-> Kamuran
+	< -0.5001653558465	-> Marvin
+	< -0.496279670794	-> Kamuran
+	< -0.485072319925	-> Marvin
+	< -0.481266891264	-> Kamuran
+	< -0.474410158877	-> Marvin
+	< -0.47091979138100004	-> Kamuran
+	< -0.467054159353	-> Marvin
+	< -0.4633697950335	-> Kamuran
+	< -0.459957424833	-> Marvin
+	< -0.45637562837449996	-> Kamuran
+	< -0.4491829229055	-> Marvin
+	< -0.44566817803250003	-> Kamuran
+	< -0.44241690767249997	-> Marvin
+	< -0.43888493453699995	-> Kamuran
+	< -0.4357834991715	-> Marvin
+	< -0.432286004709	-> Kamuran
+	< -0.428308073887	-> Marvin
+	< -0.424912013794	-> Kamuran
+	< -0.421581070004	-> Marvin
+	< -0.4177184545225	-> Kamuran
+	< -0.404597184611	-> Marvin
+	< -0.400997973243	-> Kamuran
+	< -0.397463713	-> Marvin
+	< -0.3911477237825	-> Kamuran
+	< -0.3814239383985	-> Marvin
+	< -0.3781935788635	-> Kamuran
+	< -0.3203950078035	-> Marvin
+	< -0.3075020147905	-> Kamuran
+	< -0.297844394657	-> Marvin
+	< -0.29452870302699996	-> Kamuran
+	< -0.29118505050849997	-> Marvin
+	< -0.2878667667725	-> Kamuran
+	< -0.28466533902	-> Marvin
+	< -0.2816013375725	-> Kamuran
+	< -0.2781519589865	-> Marvin
+	< -0.271327040005	-> Kamuran
+	< -0.2675577542975	-> Marvin
+	< -0.26077908402899996	-> Kamuran
+	< -0.25753421438650004	-> Marvin
+	< -0.25104424021899996	-> Kamuran
+	< -0.24766803869100001	-> Marvin
+	< -0.2370583091535	-> Kamuran
+	< -0.233795918122	-> Marvin
+	< -0.2272474262395	-> Kamuran
+	< -0.2173128522095	-> Marvin
+	< -0.21429532360300002	-> Kamuran
+	< -0.21104089791550001	-> Marvin
+	< -0.18795690648	-> Kamuran
+	< -0.18450982484200001	-> Marvin
+	< -0.16445804707349998	-> Kamuran
+	< -0.1606336833365	-> Marvin
+	< -0.15728672448	-> Kamuran
+	< -0.15382518246	-> Marvin
+	< -0.1434395871465	-> Kamuran
+	< -0.140107155506	-> Marvin
+	< 1.1384567000549999	-> Kamuran
+	< 1.1453621523650002	-> Marvin
+	< 1.15773815134	-> Kamuran
+	< 1.16507633704	-> Marvin
+	< 1.172098807	-> Kamuran
+	< 1.179224165215	-> Marvin
+	< 1.2917244860550001	-> Kamuran
+	< 1.2997424627799998	-> Marvin
+	< 1.33754129024	-> Kamuran
+	< 1.347015284605	-> Marvin
+	< 1.3558533645800002	-> Kamuran
+	< 1.3733652839100001	-> Marvin
+	< 1.38999778246	-> Kamuran
+	< 1.4177662059	-> Marvin
+	< 1.42744846193	-> Kamuran
+	< 1.435742715095	-> Marvin
+	< 1.465643436505	-> Kamuran
+	< 1.4750061049299998	-> Marvin
+	< 1.49664680819	-> Kamuran
+	< 1.5071300243349999	-> Marvin
+	< 1.517923892845	-> Kamuran
+	< 1.528825180745	-> Marvin
+	< 1.55037242501	-> Kamuran
+	< 1.5848843377750002	-> Marvin
+	< 1.597008883295	-> Kamuran
+	< 1.6104149139000001	-> Marvin
+	< 1.63697984133	-> Kamuran
+	< 1.674764633805	-> Marvin
+	< 1.68931739008	-> Kamuran
+	< 1.7573419721249999	-> Marvin
+	< 1.773817672775	-> Kamuran
+	< 1.839870363585	-> Marvin
+	< 1.85654379018	-> Kamuran
+	< 2.231751111695	-> Marvin
+	< 2.32452689348	-> Kamuran
+	< 2.3724491535850003	-> Marvin
+	>= 2.3724491535850003	-> Kamuran
+(124621/285036 instances correct)
+
+
+Time taken to build model: 10.52 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances      122174               42.8627 %
+Incorrectly Classified Instances    162862               57.1373 %
+Kappa statistic                          0.0397
+Mean absolute error                      0.3809
+Root mean squared error                  0.6172
+Relative absolute error                 88.0321 %
+Root relative squared error            132.6892 %
+Total Number of Instances           285036     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.791     0.754      0.437     0.791     0.563      0.518    Kamuran
+                 0         0          0         0         0          0.5      Firat
+                 0.273     0.208      0.401     0.273     0.325      0.533    Marvin
+Weighted Avg.    0.429     0.391      0.321     0.429     0.349      0.519
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 95910     0 25300 |     a = Kamuran
+ 53765     0 13976 |     b = Firat
+ 69821     0 26264 |     c = Marvin
+

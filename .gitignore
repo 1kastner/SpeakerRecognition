@@ -1,3 +1,13 @@
+# unwanted build products
 *.pyc
-AudioFiles/
 
+# too large to be kept with git
+AudioFiles/*
+!AudioFiles/.gitkeep
+results/*
+!results/.gitkeep
+!results/label_data.py
+
+# vendor libraries
+Vendors/*
+!Vendors/.gitkeep
