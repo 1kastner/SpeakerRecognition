@@ -65,7 +65,7 @@ Attributes:   61
               58
               59
               class
-Test mode:split 66.0% train, remainder test
+Test mode:2-fold cross-validation
 
 === Classifier model (full training set) ===
 
@@ -174,32 +174,32 @@ Test mode:split 66.0% train, remainder test
 (124225/285036 instances correct)
 
 
-Time taken to build model: 15.61 seconds
+Time taken to build model: 10.33 seconds
 
-=== Evaluation on test split ===
+=== Stratified cross-validation ===
 === Summary ===
 
-Correctly Classified Instances       41536               42.8595 %
-Incorrectly Classified Instances     55376               57.1405 %
-Kappa statistic                          0.0406
-Mean absolute error                      0.3809
-Root mean squared error                  0.6172
-Relative absolute error                 88.0126 %
-Root relative squared error            132.6178 %
-Total Number of Instances            96912     
+Correctly Classified Instances      122372               42.9321 %
+Incorrectly Classified Instances    162664               57.0679 %
+Kappa statistic                          0.041 
+Mean absolute error                      0.3805
+Root mean squared error                  0.6168
+Relative absolute error                 87.9251 %
+Root relative squared error            132.6085 %
+Total Number of Instances           285036     
 
 === Detailed Accuracy By Class ===
 
                TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
-                 0.808     0.769      0.435     0.808     0.566      0.52     Kamuran
-                 0.004     0.002      0.335     0.004     0.008      0.501    Firat
-                 0.254     0.19       0.405     0.254     0.313      0.532    Marvin
-Weighted Avg.    0.429     0.39       0.401     0.429     0.347      0.519
+                 0.791     0.754      0.437     0.791     0.563      0.519    Kamuran
+                 0         0          0         0         0          0.5      Firat
+                 0.275     0.207      0.403     0.275     0.327      0.534    Marvin
+Weighted Avg.    0.429     0.39       0.322     0.429     0.35       0.519
 
 === Confusion Matrix ===
 
      a     b     c   <-- classified as
- 33121   118  7758 |     a = Kamuran
- 18646    89  4460 |     b = Firat
- 24335    59  8326 |     c = Marvin
+ 95913     0 25297 |     a = Kamuran
+ 53854     0 13887 |     b = Firat
+ 69626     0 26459 |     c = Marvin
 
