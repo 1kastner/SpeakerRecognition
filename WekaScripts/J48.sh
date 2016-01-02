@@ -5,10 +5,10 @@ PROJECTREPOSITORY="/home/marvin/projectrepository"
 
 RunAlg () {
     CONFIDENCE="-C "${1}
-    if [${2}]; then
+    if ${2}; then
         OPTS="-"${2}
     fi
-    echo run weka -c "weka.classifiers.trees.J48 -t ${PROJECTREPOSITORY}/results/all.arff -x 2 ${OPTS} ${CONFIDENCE}"
+    echo run weka -c "weka.classifiers.trees.J48 -t ${PROJECTREPOSITORY}/results/all.arff -x 2 ${OPTS} ${CONFIDENCE} ${OPTS}"
     weka -m2G -c "weka.classifiers.trees.J48 -t ${PROJECTREPOSITORY}/results/all.arff -x 2 ${OPTS} ${CONFIDENCE}" > "${PROJECTREPOSITORY}/WekaResults/J48-C{1}${2}.txt"
 }
 
