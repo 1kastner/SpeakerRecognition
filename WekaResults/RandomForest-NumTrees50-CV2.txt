@@ -1,0 +1,105 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.RandomForest -I 50 -K 0 -S 1
+Relation:     cogs_speaker
+Instances:    285036
+Attributes:   61
+              0
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+              11
+              12
+              13
+              14
+              15
+              16
+              17
+              18
+              19
+              20
+              21
+              22
+              23
+              24
+              25
+              26
+              27
+              28
+              29
+              30
+              31
+              32
+              33
+              34
+              35
+              36
+              37
+              38
+              39
+              40
+              41
+              42
+              43
+              44
+              45
+              46
+              47
+              48
+              49
+              50
+              51
+              52
+              53
+              54
+              55
+              56
+              57
+              58
+              59
+              class
+Test mode:2-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Random forest of 50 trees, each constructed while considering 6 random features.
+Out of bag error: 0.1733
+
+
+
+Time taken to build model: 628.65 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances      240808               84.4834 %
+Incorrectly Classified Instances     44228               15.5166 %
+Kappa statistic                          0.7567
+Mean absolute error                      0.2739
+Root mean squared error                  0.3257
+Relative absolute error                 63.294  %
+Root relative squared error             70.0254 %
+Total Number of Instances           285036     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.961     0.12       0.856     0.961     0.905      0.982    Kamuran
+                 0.642     0.025      0.89      0.642     0.746      0.945    Firat
+                 0.841     0.102      0.808     0.841     0.824      0.945    Marvin
+Weighted Avg.    0.845     0.091      0.848     0.845     0.84       0.961
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 116503    841   3866 |      a = Kamuran
+   8920  43499  15322 |      b = Firat
+  10720   4559  80806 |      c = Marvin
+

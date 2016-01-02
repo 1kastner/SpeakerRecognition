@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # set these to your local environment
-PROJECTREPOSITORY="/home/marvin/projectrepository"
+PROJECTREPOSITORY="/home/gorgo/Documents/Model/SpeakerRecognition"
 
 RunAlg () {
     FORESTSIZE="-I "${1}
     echo ${FORESTSIZE}
-    weka -m2G -c "weka.classifiers.trees.RandomForest -t ${PROJECTREPOSITORY}/results/all.arff -x 2 ${FORESTSIZE}" > "${PROJECTREPOSITORY}/WekaResults/RandomForest-{1}.txt"
+    weka -m3G -c "weka.classifiers.trees.RandomForest -t ${PROJECTREPOSITORY}/results/all.arff -x 2 ${FORESTSIZE}" > "${PROJECTREPOSITORY}/WekaResults/RandomForest-{1}.txt"
 }
 
 RunAllRandomForests() {
