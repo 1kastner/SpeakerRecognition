@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import shutil
 import sys
 import random
 import re
@@ -33,13 +34,17 @@ def fetch_samples(speakers):
                 "Reformatted",
                 "SingleSpeaker",
                 speaker_name,
-        )    
+            )    
         
         samples[speaker_name] = []
 
         for file in os.listdir(dir_path):
             if file.endswith(".wav"):
-                samples[speaker_name].append("%s/%s" %(dir_path, file))
+                audio_file = AudioSegment.from_wav("%s/%s" %(dir_path, file))
+                # LIUM uses a 3-second sliding window while gender and bandwith 
+                # detection and a 5-second sliding window while segmenting   
+                if audio_file.duration_seconds > 5.0:
+                    samples[speaker_name].append("%s/%s" %(dir_path, file))
 
     return samples
 
@@ -99,7 +104,8 @@ def merge_samples(k_fold_samples, pos):
     merged_samples = {}
     
     for speaker_name in k_fold_samples:
-        file_list = k_fold_samples[speaker_name]
+        
+        file_list = deepcopy(k_fold_samples[speaker_name])
         training_samples = file_list[pos]
         del file_list[pos]
         test_samples = [file_name for sub_list in file_list for file_name in sub_list]
@@ -186,10 +192,10 @@ def k_fold_cross_validation(k_fold_samples, k):
         """
         match = re.match(r"(?P<hour>\d\d):(?P<minute>\d\d):(?P<second>\d\d),(?P<millisecond>\d\d\d)", string)
         return (
-            int(match.group("millisecond")), 
-            int(match.group("second")), 
+            int(match.group("hour")), 
             int(match.group("minute")), 
-            int(match.group("hour"))
+            int(match.group("second")), 
+            int(match.group("millisecond"))
         )
 
 
@@ -215,7 +221,11 @@ def k_fold_cross_validation(k_fold_samples, k):
                 
                 test = Voiceid(database, file) 
 
-                # supress the print function within Voiceid.extract_speakers()
+                """ 
+                supress the print function within Voiceid.extract_speakers()
+                !!! Find a different strategy; standart python interpreter does not
+                allow write access to sys.stdout.write !!!
+                """
                 write = sys.stdout.write
                 sys.stdout.write = lambda x: x
                 test.extract_speakers()
@@ -239,10 +249,10 @@ def k_fold_cross_validation(k_fold_samples, k):
                         start, stop = segment.split(" to ")
                         
                         hour, minute, second, millisecond = _get_duration_from_segment(start)
-                        start = hour*3.6e6 + minute*6e5 + second*1e3 + millisecond
+                        start = hour*3.6e6 + minute*6e4 + second*1e3 + millisecond
                         
                         hour, minute, second, millisecond = _get_duration_from_segment(stop)
-                        stop = hour*3.6e6 + minute*6e5 + second*1e3 + millisecond
+                        stop = hour*3.6e6 + minute*6e4 + second*1e3 + millisecond
                         
                         segment_size = stop - start
                         test_overall_size += segment_size
@@ -251,6 +261,11 @@ def k_fold_cross_validation(k_fold_samples, k):
                             correct_classifications_size += segment_size
 
             speaker_accuracy_ratings[speaker_name] = {"Correct Classification" : correct_classifications_size, "Fold" : pos}
+
+            """
+            !!!Delete this later!!!
+            """ 
+            print speaker_accuracy_ratings
         
         overall_accuracy_ratings.append(speaker_accuracy_ratings)
         overall_accuracy_ratings.append({"Test Sample Size" : test_overall_size, "Fold" : pos})
@@ -263,8 +278,50 @@ def k_fold_cross_validation(k_fold_samples, k):
     @type   overall_accuracy_ratings: list
     @param  overall_accuracy_ratings: a list of all accuracy ratings per speaker per fold
     
-    This function prints the accuracy ratings beautifully.
+    This function prints the accuracy ratings beautifully into a file.
 """
+
+
+def clean_trash(speakers):
+    """ 
+    This function removes all unnecessary files generated during execution.
+    """
+
+    for speaker_name in speakers:
+
+        data_dir_path = os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                os.pardir,
+                "AudioFiles",
+                "Reformatted",
+                "SingleSpeaker",
+                speaker_name,
+            )
+
+        for file in os.listdir(data_dir_path):
+            
+            if file is dir: 
+
+            if not file.endswith(".wav") and not file.startswith("."):
+                os.remove("%s%s" %(data_dir_path, file))
+
+
+    script_dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)))
+
+    for file in os.listdir(script_dir_path):
+        if not file.endswith(".py") and not file.startswith("."):
+            os.remove("%s%s" %(script_dir_path, file))
+
+        
+
+        
+
+        for file in os.listdir(dir_path):
+            if file.endswith(".wav"): 
+
+    
+
+
                   
 
 if __name__ == "__main__":
