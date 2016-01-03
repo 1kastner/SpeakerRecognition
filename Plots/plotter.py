@@ -17,12 +17,14 @@ def compare_j48_subtree_raising():
         reader = csv.reader(o, delimiter="\t")
         for row in reader:
             break # discard for line
+        row_with, row_without = [], []
         for row in reader:
-            if row[1] == "No":
-                g = pyplot.plot(row[0], row[3], "bs", label="With subtree raising")
-            else:
-                h = pyplot.plot(row[0], row[3], "g^", label="Without subtree raising")
+            row_with += [(row[0], row[3]) if row[1] == "Yes" else None]
+            row_without += [(row[0], row[3]) if row[1] == "No" else None]
+    pyplot.plot([t[0] for t in row_with if t], [t[1] for t in row_with if t], "g^", label="With subtree raising")
+    pyplot.plot([t[0] for t in row_without if t], [t[1] for t in row_without if t], "r+", label="Without subtree raising")
     pyplot.grid(True)
+    pyplot.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     pyplot.show() 
 
 
@@ -75,14 +77,16 @@ def compare_single_layer_anns():
         reader = csv.reader(o, delimiter="\t")
         for row in reader:
             break # discard for line
+        row_0_1, row_0_2, row_0_3 = [], [], []
         for row in reader:
-            if row[0] == "0.1":
-                pyplot.plot(float(row[1]), float(row[2]), "bs")
-            elif row[0] == "0.2":
-                pyplot.plot(float(row[1]), float(row[2]), "g^")
-            elif row[0] == "0.3":
-                pyplot.plot(float(row[1]), float(row[2]), "r+")                
+            row_0_1 += [(row[1], row[2]) if row[0] == "0.1" else None]
+            row_0_2 += [(row[1], row[2]) if row[0] == "0.2" else None]
+            row_0_3 += [(row[1], row[2]) if row[0] == "0.3" else None]
+    pyplot.plot([t[0] for t in row_0_1 if t], [t[1] for t in row_0_1 if t], "g^", label="learning rate = 0.1")
+    pyplot.plot([t[0] for t in row_0_2 if t], [t[1] for t in row_0_2 if t], "bs", label="learning rate = 0.2")
+    pyplot.plot([t[0] for t in row_0_3 if t], [t[1] for t in row_0_3 if t], "r+", label="learning rate = 0.3")
     pyplot.grid(True)
+    pyplot.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     pyplot.show() 
       
       
@@ -100,9 +104,9 @@ def check_alpha_0_1_converging():
     pyplot.show() 
     
     
-#compare_j48_subtree_raising()
+compare_j48_subtree_raising()
 #compare_confidence_without_subtree_raising()
 #compare_one_rule()
 #compare_random_forest()
 #compare_single_layer_anns()
-check_alpha_0_1_converging()
+#check_alpha_0_1_converging()
