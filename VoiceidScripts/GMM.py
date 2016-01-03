@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+GMM.py is basically a VoiceID wrapper (another wrapper for utilizing LIUM speaker 
+diarization tools), that generates GMM models for single speaker audio (mono, 16kHz)
+files and classifies novel single-speaker audio samples based on these models. It uses
+a k-fold cross validation approach via CCR (correct classification rate).
+
+Marvin Kastner
+Kamuran Özlem
+Fırat Öter
+@METU, 2015
+"""
+
 import os
 import shutil
 import sys
@@ -155,7 +167,7 @@ def build_gmm_model(merged_training_samples, pos):
     and iterates over them to create a database of speaker specific GMM-models.
     """
 
-    database = GMMVoiceDB("ModelDataBase%s" %(pos))
+    database = GMMVoiceDB("ModelDatabaseFold%s" %(pos))
 
     for speaker_name in merged_training_samples:
         database.add_model(merged_training_samples[speaker_name][0][:-4], speaker_name)
@@ -225,6 +237,11 @@ def k_fold_cross_validation(k_fold_samples, k):
                 supress the print function within Voiceid.extract_speakers()
                 !!! Find a different strategy; standart python interpreter does not
                 allow write access to sys.stdout.write !!!
+
+                Ex:
+                import os, sys
+                f = open(os.devnull, 'w')
+                sys.stdout = f
                 """
                 write = sys.stdout.write
                 sys.stdout.write = lambda x: x
@@ -236,6 +253,11 @@ def k_fold_cross_validation(k_fold_samples, k):
                     cluster = test.get_cluster(_cluster)
                     class_name = re.search("\((.*)\)", str(cluster)).group(1)
                     
+                    """ 
+                    redirect the print function within Voiceid.print_segments()
+                    !!! Find a different strategy; standart python interpreter does not
+                    allow write access to sys.stdout.write !!!
+                    """
                     segments = []
                     sys.stdout.write = lambda x: segments.append(x)
                     cluster.print_segments()
@@ -261,30 +283,76 @@ def k_fold_cross_validation(k_fold_samples, k):
                             correct_classifications_size += segment_size
 
             speaker_accuracy_ratings[speaker_name] = {"Correct Classification" : correct_classifications_size, "Fold" : pos}
-
-            """
-            !!!Delete this later!!!
-            """ 
-            print speaker_accuracy_ratings
         
-        overall_accuracy_ratings.append(speaker_accuracy_ratings)
-        overall_accuracy_ratings.append({"Test Sample Size" : test_overall_size, "Fold" : pos})
+        overall_accuracy_ratings.append([speaker_accuracy_ratings, {"Test Sample Size" : test_overall_size, "Fold" : pos}])
 
     return overall_accuracy_ratings
 
 
-# def print_results(overall_accuracy_ratings, speakers):
-"""
+def print_results(overall_accuracy_ratings, speakers, k):
+    """
     @type   overall_accuracy_ratings: list
-    @param  overall_accuracy_ratings: a list of all accuracy ratings per speaker per fold
+    @param  overall_accuracy_ratings: a list of statistical information per speaker per fold
+    @type   speakers: list        
+    @param  speakers: a collection of speaker names 
+    @type   k: integer        
+    @param  k: an integer value for the k-fold cross validation
     
-    This function prints the accuracy ratings beautifully into a file.
+    This function prints the accuracy ratings beautifully into a file. Accuracy is evaluated
+    based on a simple accuracy measure, CRR (Correct Recognition Rate), which is the ratio of 
+    correctly classified instances to the overall sample size.
+    """
+
+    results_dir_path = os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                os.pardir,
+                "VoiceidResults",
+            )
+
+    results_file = open("%s/GMM_Results.txt" %(results_dir_path), "w")
+    results_file.write(">>> %s-Fold Cross-Validation via Correct Recognition Rate (CRR) <<<\n\n\n" %(k))
+
+    fold_accuracies = []
+
+    for fold in overall_accuracy_ratings:
+         
+        fold_speaker_ratings = deepcopy(fold[0])
+        fold_test_sample_size = fold[1]["Test Sample Size"] 
+        fold_number = fold[1]["Fold"] 
+
+        results_file.write("**********\nFold No: %s\n**********\n\n" %(fold_number))
+        results_file.write("Test Sample Size: %s ms (in milliseconds)\n\n" %(fold_test_sample_size))
+
+        fold_correct_classification = 0
+
+        for speaker_name in speakers:
+
+            speaker_correct_classification = fold_speaker_ratings[speaker_name]["Correct Classification"]
+            results_file.write("Speaker Name: %s --> Correct Classification: %s ms\n" %(speaker_name, speaker_correct_classification))
+            fold_correct_classification += speaker_correct_classification
+
+        fold_accuracy = round(100*fold_correct_classification/fold_test_sample_size, 2)
+        fold_accuracies.append(fold_accuracy)
+        results_file.write("\nFold Accuracy: %s%%\n\n" %(fold_accuracy))
+
+    model_accuracy = round(sum(fold_accuracies)/k, 2)
+
+    results_file.write("\n>>> The %s-fold accuracy of this model is: %s%% <<<" %(k, model_accuracy))
+
+    results_file.close()
+
+
 """
-
-
+Check clean_trash() function for errors!
+"""
 def clean_trash(speakers):
     """ 
-    This function removes all unnecessary files generated during execution.
+    @type   speakers: list
+    @param  speakers: a list of speaker names in string
+    
+    This function removes all unnecessary files generated during execution from_wav
+    both data and script directiories. It only allows to keep GMM models generated
+    for speakers per fold and the accuracy results.
     """
 
     for speaker_name in speakers:
@@ -299,29 +367,25 @@ def clean_trash(speakers):
             )
 
         for file in os.listdir(data_dir_path):
-            
-            if file is dir: 
-
-            if not file.endswith(".wav") and not file.startswith("."):
+            if (
+                not file.endswith(".wav") 
+                and not file.startswith(".") 
+                and os.path.isfile("%s%s" %(data_dir_path, file))
+            ):
                 os.remove("%s%s" %(data_dir_path, file))
 
+            elif os.path.isdir("%s%s" %(data_dir_path, file)):
+                shutil.rmtree("%s%s" %(data_dir_path, file))
 
     script_dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)))
 
     for file in os.listdir(script_dir_path):
-        if not file.endswith(".py") and not file.startswith("."):
+        if (
+            not file.endswith(".py") 
+            and not file.startswith(".")
+            and os.path.isfile("%s%s" %(script_dir_path, file))
+        ):
             os.remove("%s%s" %(script_dir_path, file))
-
-        
-
-        
-
-        for file in os.listdir(dir_path):
-            if file.endswith(".wav"): 
-
-    
-
-
                   
 
 if __name__ == "__main__":
@@ -332,6 +396,5 @@ if __name__ == "__main__":
     samples = fetch_samples(speakers)
     k_fold_samples = k_fold_sampling(samples, k)
     overall_accuracy_ratings = k_fold_cross_validation(k_fold_samples, k)
-
-    for ratings in overall_accuracy_ratings:
-        print ratings
+    print_results(overall_accuracy_ratings, speakers, k)
+    clean_trash(speakers)

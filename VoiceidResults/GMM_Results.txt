@@ -1,0 +1,30 @@
+>>> 2-Fold Cross-Validation via Correct Recognition Rate (CRR) <<<
+
+
+**********
+Fold No: 0
+**********
+
+Test Sample Size: 2481610.0 ms (in milliseconds)
+
+Speaker Name: Marvin --> Correct Classification: 960420.0 ms
+Speaker Name: Kamuran --> Correct Classification: 1132840.0 ms
+Speaker Name: Firat --> Correct Classification: 344460.0 ms
+
+
+Fold Accuracy: 98.23%
+
+**********
+Fold No: 1
+**********
+
+Test Sample Size: 1678450.0 ms (in milliseconds)
+
+Speaker Name: Marvin --> Correct Classification: 400550.0 ms
+Speaker Name: Kamuran --> Correct Classification: 505330.0 ms
+Speaker Name: Firat --> Correct Classification: 729480.0 ms
+
+Fold Accuracy: 97.43%
+
+
+>>> The 2-fold accuracy of this model is: 97.83% <<<
