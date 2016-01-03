@@ -1,0 +1,17 @@
+Confidence	Subtree Raising	Accuracy on Training Data	Accuracy on Cross Validation
+0.001	No		71.36
+0.05	No		70.53
+0.1	No	96.66	70.13
+0.1	Yes	96.75	70.12
+0.15	No	96.99	69.98
+0.15	Yes	97.05	69.98
+0.2	No	97.20	69.87
+0.2	Yes	97.23	69.86
+0.25	No		69.77
+0.25	Yes	97.41	69.76
+0.3	No	97.45	69.69
+0.3	Yes	97.46	69.69
+0.35	No		69.68
+0.35	Yes		69.68
+0.4	No		69.68
+0.4	Yes		69.68
