@@ -24,7 +24,7 @@ def compare_j48_subtree_raising():
     pyplot.plot([t[0] for t in row_with if t], [t[1] for t in row_with if t], "g^", label="With subtree raising")
     pyplot.plot([t[0] for t in row_without if t], [t[1] for t in row_without if t], "r+", label="Without subtree raising")
     pyplot.grid(True)
-    pyplot.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    pyplot.legend()
     pyplot.show() 
 
 
@@ -86,7 +86,7 @@ def compare_single_layer_anns():
     pyplot.plot([t[0] for t in row_0_2 if t], [t[1] for t in row_0_2 if t], "bs", label="learning rate = 0.2")
     pyplot.plot([t[0] for t in row_0_3 if t], [t[1] for t in row_0_3 if t], "r+", label="learning rate = 0.3")
     pyplot.grid(True)
-    pyplot.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    pyplot.legend(loc=4)
     pyplot.show() 
       
       
@@ -104,9 +104,9 @@ def check_alpha_0_1_converging():
     pyplot.show() 
     
     
-compare_j48_subtree_raising()
+#compare_j48_subtree_raising()
 #compare_confidence_without_subtree_raising()
 #compare_one_rule()
 #compare_random_forest()
-#compare_single_layer_anns()
+compare_single_layer_anns()
 #check_alpha_0_1_converging()

@@ -1,4 +1,5 @@
 Confidence	Subtree Raising	Accuracy on Training Data	Accuracy on Cross Validation
+0.0001	No		71.00
 0.001	No		71.36
 0.05	No		70.53
 0.1	No	96.66	70.13
